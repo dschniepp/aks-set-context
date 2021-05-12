@@ -1,16 +1,16 @@
 name: 'Azure Kubernetes set context'
 description: 'Sets the kubeconfig on the machine to communicate with the Azure Kubernetes cluster. Github.com/Azure/Actions'
 inputs:
-  clientId:
+  client-id:
     required: true
     default: ''
-  clientSecret:
+  client-secret:
     required: true
     default: ''
-  subscriptionId:
+  subscription-id:
     required: true
     default: ''
-  tenantId:
+  tenant-id:
     required: true
     default: ''
   resource-group:
