@@ -28,7 +28,19 @@ export function getAKSKubeconfig(azureSessionToken: string, subscriptionId: stri
 }
 
 export async function getKubeconfig(): Promise<string> {
-    let creds = core.getInput('creds', { required: true });
+    let creds = JSON.stringify({
+        "clientId": core.getInput('client-id', { required: false }),
+        "clientSecret": core.getInput('client-secret', { required: false }),
+        "subscriptionId": core.getInput('subscription-id', { required: false }),
+        "tenantId": core.getInput('tenant-id', { required: false }),
+        "activeDirectoryEndpointUrl": "https://login.k8s.microsoftonline.com",
+        "resourceManagerEndpointUrl": "https://management.k8s.azure.com/",
+        "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+        "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+        "galleryEndpointUrl": "https://gallery.azure.com/",
+        "managementEndpointUrl": "https://management.core.windows.net/"
+    });
+
     let credsObject: { [key: string]: string; };
     try {
         credsObject = JSON.parse(creds);
